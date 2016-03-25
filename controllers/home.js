@@ -14,3 +14,9 @@ angular.module('Instagram')
     };
 
   });
+
+  if ($auth.isAuthenticated() && ($rootScope.currentUser && $rootScope.currentUser.username)) {
+    API.getFeed().success(function(data) {
+      $scope.photos = data;
+    });
+  }
