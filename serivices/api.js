@@ -13,4 +13,10 @@ angular.module('Instagram')
       }
     }
 
-  });
+  })
+
+  .run(function($rootScope, $window, $auth) {
+  if ($auth.isAuthenticated()) {
+    $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+  }
+});
